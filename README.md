@@ -21,7 +21,7 @@ Em seguida, adicione a dependência em seu arquivo `pom.xml`:
 ```xml
 <dependency>
     <groupId>com.github.open-fidias</groupId>
-    <artifactId>inter-sdk-java</artifactId>
+    <artifactId>pj-sdk-java</artifactId>
     <version>1.0.3</version>
 </dependency>
 ```
