@@ -1,8 +1,31 @@
 # inter-sdk-java
 
-## Modo de execução
+Fork do projeto <https://github.com/inter-co/pj-sdk-java>. Este fork tem o objetivo de
+simplificar o processo de instalação de dependência ao usar o <jitpack.io>.
 
-- Para executar os métodos do InterSdk é necessário uma aplicação externa que o tenha como dependência de projeto. Pode-se utilizar o projeto exemplo que se encontra no seguinte repositório: https://gitlab.sharedservices.local/sdks/demo-sdk-java
+## Instalação
 
-- Para verificar se um método está executando corretamente, é possível rodar/criar um teste para o mesmo na pasta test do projeto. Nesse caso, na classe TestUtils deve ser informado os seguintes dados: clientId, clientSecret, ambiente de execução, o path do certificado em pfx e a senha.
-- 
+Adicione o repositório do jitpack ao seu arquivo `pom.xml`:
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+Em seguida, adicione a dependência em seu arquivo `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.github.open-fidias</groupId>
+    <artifactId>inter-sdk-java</artifactId>
+    <version>1.0.3</version>
+</dependency>
+```
+
+## Documentação
+
+<https://developers.inter.co/>

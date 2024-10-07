@@ -4,9 +4,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>inter</groupId>
+  <groupId>com.github.open-fidias</groupId>
   <artifactId>inter-sdk-java</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 
   <name>inter-sdk-java</name>
 
