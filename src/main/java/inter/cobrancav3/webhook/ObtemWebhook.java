@@ -20,7 +20,7 @@ public class ObtemWebhook {
 
     public Webhook obter(Config config) throws SdkException {
         log.info("ObterWebhook cobrançaV3 {}", config.getClientId());
-        String url = URL_COBRANCAS_WEBHOOK.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_COBRANCAS_WEBHOOK);
         String json = HttpUtils.callGet(config, url, ESCOPO_BOLETO_COBRANCA_READ, "Erro ao obter webhook");
         try {
             return new ObjectMapper().readValue(json, Webhook.class);

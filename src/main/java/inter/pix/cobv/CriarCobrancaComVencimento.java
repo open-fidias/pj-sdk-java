@@ -21,7 +21,7 @@ public class CriarCobrancaComVencimento {
 
     public CobrancaVencimentoDetalhada criar(Config config, String txid, CobrancaVencimento cobranca) throws SdkException {
         log.info("CriarCobrancaComVencimento {} {}", config.getClientId(), txid);
-        String url = URL_PIX_COBRANCA_COM_VENCIMENTO.replace("AMBIENTE", config.getAmbiente()) + "/" + txid;
+        String url = config.baseURL(URL_PIX_COBRANCA_COM_VENCIMENTO) + "/" + txid;
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(cobranca);
             json = HttpUtils.callPut(config, url, ESCOPO_PIX_COBV_WRITE, "Erro ao criar cobrança com vencimento", json);

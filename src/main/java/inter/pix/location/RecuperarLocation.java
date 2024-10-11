@@ -19,7 +19,7 @@ import static inter.constants.Constants.URL_PIX_LOCATIONS;
 public class RecuperarLocation {
     public Location recuperar(Config config, String id) throws SdkException {
         log.info("RecuperarLocation {} id={}", config.getClientId(), id);
-        String url = URL_PIX_LOCATIONS.replace("AMBIENTE", config.getAmbiente()) + "/" + id;
+        String url = config.baseURL(URL_PIX_LOCATIONS) + "/" + id;
         String json = HttpUtils.callGet(config, url, ESCOPO_PIX_LOCATION_READ, "Erro ao recuperar location");
         try {
             return new ObjectMapper().readValue(json, Location.class);

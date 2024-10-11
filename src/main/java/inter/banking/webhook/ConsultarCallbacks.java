@@ -42,7 +42,7 @@ public class ConsultarCallbacks {
     }
 
     private PaginaCallbacks getPage(Config config, String tipoWebhook, String dataHoraInicio, String dataHoraFim, int pagina, Integer tamanhoPagina, FiltroBuscarCallbacks filtro) throws SdkException {
-        String url1 = URL_BANKING_WEBHOOK.replace("AMBIENTE", config.getAmbiente());
+        String url1 = config.baseURL(URL_BANKING_WEBHOOK);
         String url2 = url1 + "/" + tipoWebhook + "/callbacks";
         String url = url2
                 + "?dataHoraInicio=" + dataHoraInicio

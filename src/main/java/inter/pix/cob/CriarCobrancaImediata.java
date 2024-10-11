@@ -20,7 +20,7 @@ import static inter.constants.Constants.URL_PIX_COBRANCAS_IMEDIATAS;
 public class CriarCobrancaImediata {
     public CobrancaDetalhada criar(Config config, Cobranca cobranca) throws SdkException {
         log.info("CriarCobrancaImediata {} {}", config.getClientId(), cobranca.getTxid());
-        String url = URL_PIX_COBRANCAS_IMEDIATAS.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_PIX_COBRANCAS_IMEDIATAS);
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(cobranca);
             if (cobranca.getTxid() == null) {

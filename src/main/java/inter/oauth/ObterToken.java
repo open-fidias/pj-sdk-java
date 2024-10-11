@@ -38,7 +38,7 @@ public class ObterToken {
         log.info("ObterToken {} {}", config.getClientId(), escopos);
         BasicHttpClientConnectionManager connectionManager = SslUtils.buildConnectionManager(config.getCertificado(), config.getSenha());
         CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(connectionManager).build();
-        String url = URL_TOKEN.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_TOKEN);
         HttpPost request = new HttpPost(url);
         List<NameValuePair> prms = new ArrayList<>();
         prms.add(new BasicNameValuePair("client_id", config.getClientId()));

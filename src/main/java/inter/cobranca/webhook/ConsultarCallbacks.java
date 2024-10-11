@@ -42,7 +42,7 @@ public class ConsultarCallbacks {
     }
 
     private PaginaCallbacks getPage(Config config, String dataHoraInicio, String dataHoraFim, int pagina, Integer tamanhoPagina, FiltroBuscarCallbacks filtro) throws SdkException {
-        String url = URL_BOLETOS_WEBHOOK_CALLBACKS.replace("AMBIENTE", config.getAmbiente())
+        String url = config.baseURL(URL_BOLETOS_WEBHOOK_CALLBACKS)
                 + "?dataHoraInicio=" + dataHoraInicio
                 + "&dataHoraFim=" + dataHoraFim
                 + "&pagina=" + pagina

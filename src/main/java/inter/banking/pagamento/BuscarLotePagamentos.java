@@ -29,7 +29,7 @@ public class BuscarLotePagamentos {
 
     public ProcessamentoLote buscar(Config config, String idLote) throws SdkException {
         log.info("BuscarLotePagamentos {} {}", config.getClientId(), idLote);
-        String url = URL_BANKING_PAGAMENTO_LOTE.replace("AMBIENTE", config.getAmbiente()) + "/" + idLote;
+        String url = config.baseURL(URL_BANKING_PAGAMENTO_LOTE) + "/" + idLote;
         String json = HttpUtils.callGet(config, url, ESCOPO_PAGAMENTOS_LOTE_READ, "Erro ao buscar lote");
         // não remover comentários com padrão //[, //], ou //=
         //[

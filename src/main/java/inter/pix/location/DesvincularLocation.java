@@ -19,7 +19,7 @@ import static inter.constants.Constants.URL_PIX_LOCATIONS;
 public class DesvincularLocation {
     public Location desvincular(Config config, String id) throws SdkException {
         log.info("DesvincularLocation {} id={}", config.getClientId(), id);
-        String url = URL_PIX_LOCATIONS.replace("AMBIENTE", config.getAmbiente()) + "/" + id + "/txid";
+        String url = config.baseURL(URL_PIX_LOCATIONS) + "/" + id + "/txid";
         String json = HttpUtils.callDelete(config, url, ESCOPO_PIX_LOCATION_WRITE, "Erro ao desvincular location");
         try {
             return new ObjectMapper().readValue(json, Location.class);

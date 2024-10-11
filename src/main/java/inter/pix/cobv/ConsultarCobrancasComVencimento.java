@@ -42,7 +42,7 @@ public class ConsultarCobrancasComVencimento {
     }
 
     private PaginaCobrancasVencimento getPage(Config config, String dataInicial, String dataFinal, int pagina, Integer tamanhoPagina, FiltroConsultarCobrancasComVencimento filtro) throws SdkException {
-        String url = URL_PIX_COBRANCA_COM_VENCIMENTO.replace("AMBIENTE", config.getAmbiente()) + "?inicio=" + dataInicial + "&fim=" + dataFinal
+        String url = config.baseURL(URL_PIX_COBRANCA_COM_VENCIMENTO) + "?inicio=" + dataInicial + "&fim=" + dataFinal
                 + "&paginacao.paginaAtual=" + pagina
                 + (tamanhoPagina != null ? "&paginacao.itensPorPagina=" + tamanhoPagina : "")
                 + addfilters(filtro);

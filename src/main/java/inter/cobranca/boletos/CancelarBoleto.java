@@ -21,7 +21,7 @@ public class CancelarBoleto {
 
     public void cancelar(Config config, String nossoNumero, MotivoCancelamento motivoCancelamento) throws SdkException {
         log.info("CancelarBoleto {} {} {}", config.getClientId(), nossoNumero, motivoCancelamento);
-        String url = URL_BOLETOS.replace("AMBIENTE", config.getAmbiente()) + "/" + nossoNumero + "/cancelar";
+        String url = config.baseURL(URL_BOLETOS) + "/" + nossoNumero + "/cancelar";
         RequisicaoCancelarBoleto request = RequisicaoCancelarBoleto.builder().motivoCancelamento(motivoCancelamento).build();
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request);

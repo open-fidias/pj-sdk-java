@@ -21,7 +21,7 @@ public class EmitirBoleto {
 
     public RespostaEmitirBoleto emitir(Config config, Boleto boleto) throws SdkException {
         log.info("EmitirBoleto {} {}", config.getClientId(), boleto.getSeuNumero());
-        String url = URL_BOLETOS.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_BOLETOS);
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(boleto);
             json = HttpUtils.callPost(config, url, ESCOPO_BOLETO_COBRANCA_WRITE, "Erro ao emitir boleto", json);

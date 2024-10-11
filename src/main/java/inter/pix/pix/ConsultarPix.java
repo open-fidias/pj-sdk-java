@@ -19,7 +19,7 @@ import static inter.constants.Constants.URL_PIX_PIX;
 public class ConsultarPix {
     public Pix consultar(Config config, String e2eId) throws SdkException {
         log.info("ConsultarPix {} e2eId={}", config.getClientId(), e2eId);
-        String url = URL_PIX_PIX.replace("AMBIENTE", config.getAmbiente()) + "/" + e2eId;
+        String url = config.baseURL(URL_PIX_PIX) + "/" + e2eId;
         String json = HttpUtils.callGet(config, url, ESCOPO_PIX_PIX_READ, "Erro ao consultar pix");
         try {
             return new ObjectMapper().readValue(json, Pix.class);

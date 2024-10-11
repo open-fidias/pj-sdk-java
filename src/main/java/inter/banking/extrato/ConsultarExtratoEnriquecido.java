@@ -41,7 +41,7 @@ public class ConsultarExtratoEnriquecido {
     }
 
     private PaginaExtratoEnriquecido getPage(Config config, String dataInicial, String dataFinal, int pagina, Integer tamanhoPagina, FiltroConsultarExtratoEnriquecido filtro) throws SdkException {
-        String url = URL_BANKING_EXTRATO_ENRIQUECIDO.replace("AMBIENTE", config.getAmbiente()) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal
+        String url = config.baseURL(URL_BANKING_EXTRATO_ENRIQUECIDO) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal
                 + "&pagina=" + pagina
                 + (tamanhoPagina != null ? "&tamanhoPagina=" + tamanhoPagina : "")
                 + addfilters(filtro);

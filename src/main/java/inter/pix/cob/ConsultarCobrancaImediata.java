@@ -19,7 +19,7 @@ import static inter.constants.Constants.URL_PIX_COBRANCAS_IMEDIATAS;
 public class ConsultarCobrancaImediata {
     public CobrancaDetalhada consultar(Config config, String txId) throws SdkException {
         log.info("ConsultarCobrancaImediata {} txId={}", config.getClientId(), txId);
-        String url = URL_PIX_COBRANCAS_IMEDIATAS.replace("AMBIENTE", config.getAmbiente()) + "/" + txId;
+        String url = config.baseURL(URL_PIX_COBRANCAS_IMEDIATAS) + "/" + txId;
         String json = HttpUtils.callGet(config, url, ESCOPO_PIX_COB_READ, "Erro ao consultar cobrança imediata");
         try {
             return new ObjectMapper().readValue(json, CobrancaDetalhada.class);

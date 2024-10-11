@@ -22,7 +22,7 @@ public class RevisarCobrancaComVencimento {
     public CobrancaVencimentoDetalhada revisar(Config config, String txid, CobrancaVencimento cobranca) throws SdkException {
         log.info("RevisarCobrancaImediata {} {}", config.getClientId(), txid);
         try {
-            String url = URL_PIX_COBRANCA_COM_VENCIMENTO.replace("AMBIENTE", config.getAmbiente()) + "/" + txid;
+            String url = config.baseURL(URL_PIX_COBRANCA_COM_VENCIMENTO) + "/" + txid;
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(cobranca);
             json = HttpUtils.callPatch(config, url, ESCOPO_PIX_COBV_WRITE, "Erro ao revisar cobrança com vencimento", json);
             return new ObjectMapper().readValue(json, CobrancaVencimentoDetalhada.class);

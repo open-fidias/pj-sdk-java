@@ -23,7 +23,7 @@ public class BuscarPagamentos {
 
     public List<Pagamento> buscar(Config config, String dataInicial, String dataFinal, FiltroBuscarPagamentos filtro) throws SdkException {
         log.info("BuscarPagamentos {} {}-{}", config.getClientId(), dataInicial, dataFinal);
-        String url = URL_BANKING_PAGAMENTO.replace("AMBIENTE", config.getAmbiente()) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal
+        String url = config.baseURL(URL_BANKING_PAGAMENTO) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal
                 + addfilters(filtro);
         String json = HttpUtils.callGet(config, url, ESCOPO_PAGAMENTO_BOLETO_READ, "Erro ao buscar pagamentos");
         try {

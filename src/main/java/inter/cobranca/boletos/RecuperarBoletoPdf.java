@@ -22,7 +22,7 @@ public class RecuperarBoletoPdf {
 
     public void recuperar(Config config, String nossoNumero, String arquivo) throws SdkException {
         log.info("RecuperarBoletoPdf {} nossoNumero={}", config.getClientId(), nossoNumero);
-        String url = URL_BOLETOS.replace("AMBIENTE", config.getAmbiente()) + "/" + nossoNumero + "/pdf";
+        String url = config.baseURL(URL_BOLETOS) + "/" + nossoNumero + "/pdf";
         String json = HttpUtils.callGet(config, url, ESCOPO_BOLETO_COBRANCA_READ, "Erro ao recuperar boleto pdf");
         try {
             RetornoPdf retornoPdf = new ObjectMapper().readValue(json, RetornoPdf.class);

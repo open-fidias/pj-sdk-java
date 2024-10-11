@@ -17,7 +17,7 @@ public class ObterWebhook {
 
     public Webhook obter(Config config, String tipoWebhook) throws SdkException {
         log.info("ObterWebhook banking {} {}", config.getClientId(), tipoWebhook);
-        String url = URL_BANKING_WEBHOOK.replace("AMBIENTE", config.getAmbiente()) + "/" + tipoWebhook;
+        String url = config.baseURL(URL_BANKING_WEBHOOK) + "/" + tipoWebhook;
         String json = HttpUtils.callGet(config, url, ESCOPO_BANKING_WEBHOOK_BANKING_READ, "Erro ao obter webhook");
         try {
             return new ObjectMapper().readValue(json, Webhook.class);

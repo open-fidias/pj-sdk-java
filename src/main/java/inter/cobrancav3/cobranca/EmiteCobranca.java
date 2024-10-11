@@ -21,7 +21,7 @@ public class EmiteCobranca {
 
     public RespostaEmitirCobranca emitir(Config config, RequisicaoEmitirCobranca requisicaoEmitirCobranca) throws SdkException {
         log.info("EmitirCobranca {} {}", config.getClientId(), requisicaoEmitirCobranca.getSeuNumero());
-        String url = URL_COBRANCAS.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_COBRANCAS);
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(requisicaoEmitirCobranca);
             json = HttpUtils.callPost(config, url, ESCOPO_BOLETO_COBRANCA_WRITE, "Erro ao emitir cobrança", json);

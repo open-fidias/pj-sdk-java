@@ -23,7 +23,7 @@ public class IncluirPagamentosLote {
 
     public RespostaIncluirPagamentosLote incluir(Config config, String meuIdentificador, List<ItemLote> pagamentos) throws SdkException {
         log.info("IncluirPagamentosLote {} {} {}", config.getClientId(), meuIdentificador, pagamentos.size());
-        String url = URL_BANKING_PAGAMENTO_LOTE.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_BANKING_PAGAMENTO_LOTE);
         Lote request = Lote.builder()
                 .meuIdentificador(meuIdentificador)
                 .pagamentos(pagamentos)

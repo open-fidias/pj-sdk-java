@@ -19,7 +19,7 @@ import static inter.constants.Constants.URL_PIX_PIX;
 public class ConsultarDevolucao {
     public DevolucaoDetalhada consultar(Config config, String e2eId, String id) throws SdkException {
         log.info("ConsultarDevolucao {} e2eId={} id={}", config.getClientId(), e2eId, id);
-        String url = URL_PIX_PIX.replace("AMBIENTE", config.getAmbiente()) + "/" + e2eId + "/devolucao/" + id;
+        String url = config.baseURL(URL_PIX_PIX) + "/" + e2eId + "/devolucao/" + id;
         String json = HttpUtils.callGet(config, url, ESCOPO_PIX_PIX_READ, "Erro ao consultar devolução");
         try {
             return new ObjectMapper().readValue(json, DevolucaoDetalhada.class);

@@ -40,7 +40,7 @@ public class ConsultarLocationsCadastradas {
     }
 
     private PaginaLocations getPage(Config config, String dataInicial, String dataFinal, int pagina, Integer tamanhoPagina, FiltroConsultarLocations filtro) throws SdkException {
-        String url = URL_PIX_LOCATIONS.replace("AMBIENTE", config.getAmbiente()) + "?inicio=" + dataInicial + "&fim=" + dataFinal
+        String url = config.baseURL(URL_PIX_LOCATIONS) + "?inicio=" + dataInicial + "&fim=" + dataFinal
                 + "&paginacao.paginaAtual=" + pagina
                 + (tamanhoPagina != null ? "&paginacao.itensPorPagina=" + tamanhoPagina : "")
                 + addfilters(filtro);

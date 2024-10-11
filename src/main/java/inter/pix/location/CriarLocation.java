@@ -21,7 +21,7 @@ import static inter.constants.Constants.URL_PIX_LOCATIONS;
 public class CriarLocation {
     public Location criar(Config config, TipoCob tipoCob) throws SdkException {
         log.info("CriarLocation pix {} {}", config.getClientId(), tipoCob);
-        String url = URL_PIX_LOCATIONS.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_PIX_LOCATIONS);
         CriarLocationRequest request = CriarLocationRequest.builder().tipoCob(tipoCob).build();
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request);

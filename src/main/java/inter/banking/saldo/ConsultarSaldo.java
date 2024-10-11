@@ -20,7 +20,7 @@ public class ConsultarSaldo {
 
     public Saldo consultar(Config config, String dataSaldo) throws SdkException {
         log.info("ConsultarSaldo {} {}", config.getClientId(), dataSaldo);
-        String url = URL_BANKING_SALDO.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_BANKING_SALDO);
         if (dataSaldo != null) {
             url += "?dataSaldo=" + dataSaldo;
         }

@@ -20,7 +20,7 @@ public class ConsultarExtrato {
 
     public Extrato consultar(Config config, String dataInicial, String dataFinal) throws SdkException {
         log.info("ConsultarExtrato {} {}-{}", config.getClientId(), dataInicial, dataFinal);
-        String url = URL_BANKING_EXTRATO.replace("AMBIENTE", config.getAmbiente()) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal;
+        String url = config.baseURL(URL_BANKING_EXTRATO) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal;
         String json = HttpUtils.callGet(config, url, ESCOPO_EXTRATO_READ, "Erro ao consultar extrato");
         try {
             return new ObjectMapper().readValue(json, Extrato.class);

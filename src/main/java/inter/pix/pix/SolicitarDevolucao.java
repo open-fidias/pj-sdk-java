@@ -20,7 +20,7 @@ import static inter.constants.Constants.URL_PIX_PIX;
 public class SolicitarDevolucao {
     public DevolucaoDetalhada solicitar(Config config, String e2eId, String id, RequisicaoBodyDevolucao requisicaoBodyDevolucao) throws SdkException {
         log.info("SolicitarDevolucao {} e2eId={} id={}", config.getClientId(), e2eId, id);
-        String url = URL_PIX_PIX.replace("AMBIENTE", config.getAmbiente()) + "/" + e2eId + "/devolucao/" + id;
+        String url = config.baseURL(URL_PIX_PIX) + "/" + e2eId + "/devolucao/" + id;
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(requisicaoBodyDevolucao);
             json = HttpUtils.callPut(config, url, ESCOPO_PIX_PIX_WRITE, "Erro ao solicitar devolução", json);

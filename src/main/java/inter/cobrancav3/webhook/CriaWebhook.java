@@ -20,7 +20,7 @@ public class CriaWebhook {
 
     public void criar(Config config, String webhookUrl) throws SdkException {
         log.info("CriarWebhook cobrançaV3 {} {}", config.getClientId(), webhookUrl);
-        String url = URL_COBRANCAS_WEBHOOK.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_COBRANCAS_WEBHOOK);
         CriarWebhookRequest request = CriarWebhookRequest.builder().webhookUrl(webhookUrl).build();
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request);

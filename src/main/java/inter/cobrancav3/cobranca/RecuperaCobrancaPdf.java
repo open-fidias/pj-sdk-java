@@ -22,7 +22,7 @@ public class RecuperaCobrancaPdf {
 
     public void recuperar(Config config, String codigoSolicitacao, String arquivo) throws SdkException {
         log.info("RecuperarCobrancaPdf {} codigoSolicitacao={}", config.getClientId(), codigoSolicitacao);
-        String url = URL_COBRANCAS.replace("AMBIENTE", config.getAmbiente()) + "/" + codigoSolicitacao + "/pdf";
+        String url = config.baseURL(URL_COBRANCAS) + "/" + codigoSolicitacao + "/pdf";
         String json = HttpUtils.callGet(config, url, ESCOPO_BOLETO_COBRANCA_READ, "Erro ao recuperar cobrança pdf");
         try {
             RetornoPdf retornoPdf = new ObjectMapper().readValue(json, RetornoPdf.class);
