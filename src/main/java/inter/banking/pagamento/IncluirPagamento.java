@@ -21,7 +21,7 @@ public class IncluirPagamento {
 
     public RespostaIncluirPagamento incluir(Config config, PagamentoBoleto pagamento) throws SdkException {
         log.info("IncluirPagamento {} {}", config.getClientId(), pagamento.getCodBarraLinhaDigitavel());
-        String url = URL_BANKING_PAGAMENTO.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_BANKING_PAGAMENTO);
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(pagamento);
             json = HttpUtils.callPost(config, url, ESCOPO_PAGAMENTO_BOLETO_WRITE, "Erro ao incluir pagamento", json);

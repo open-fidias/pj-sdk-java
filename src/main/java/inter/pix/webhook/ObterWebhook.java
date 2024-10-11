@@ -19,7 +19,7 @@ import static inter.constants.Constants.URL_PIX_WEBHOOK;
 public class ObterWebhook {
     public Webhook obter(Config config, String chave) throws SdkException {
         log.info("ObterWebhook pix {} {}", config.getClientId(), chave);
-        String url = URL_PIX_WEBHOOK.replace("AMBIENTE", config.getAmbiente()) + "/" + chave;
+        String url = config.baseURL(URL_PIX_WEBHOOK) + "/" + chave;
         String json = HttpUtils.callGet(config, url, ESCOPO_PIX_WEBHOOK_READ, "Erro ao obter webhook");
         try {
             return new ObjectMapper().readValue(json, Webhook.class);

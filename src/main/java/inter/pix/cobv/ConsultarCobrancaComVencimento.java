@@ -20,7 +20,7 @@ public class ConsultarCobrancaComVencimento {
 
     public CobrancaVencimentoDetalhada consultar(Config config, String txId) throws SdkException {
         log.info("ConsultarCobrancaComVencimento {} txId={}", config.getClientId(), txId);
-        String url = URL_PIX_COBRANCA_COM_VENCIMENTO.replace("AMBIENTE", config.getAmbiente()) + "/" + txId;
+        String url = config.baseURL(URL_PIX_COBRANCA_COM_VENCIMENTO) + "/" + txId;
         String json = HttpUtils.callGet(config, url, ESCOPO_PIX_COBV_READ, "Erro ao consultar cobrança com vencimento");
         try {
             return new ObjectMapper().readValue(json, CobrancaVencimentoDetalhada.class);

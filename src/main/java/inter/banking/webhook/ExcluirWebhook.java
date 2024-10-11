@@ -12,7 +12,7 @@ public class ExcluirWebhook {
 
     public void excluir(Config config, String tipoWebhook) throws SdkException {
         log.info("ExcluirWebhook banking {} {}", config.getClientId(), tipoWebhook);
-        String url = URL_BANKING_WEBHOOK.replace("AMBIENTE", config.getAmbiente()) + "/" + tipoWebhook;
+        String url = config.baseURL(URL_BANKING_WEBHOOK) + "/" + tipoWebhook;
 
         HttpUtils.callDelete(config, url, ESCOPO_BANKING_WEBHOOK_BANKING_WRITE, "Erro ao excluir webhook");
     }

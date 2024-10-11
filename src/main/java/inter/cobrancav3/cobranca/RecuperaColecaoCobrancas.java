@@ -43,7 +43,7 @@ public class RecuperaColecaoCobrancas {
     }
 
     private PaginaCobrancas getPage(Config config, String dataInicial, String dataFinal, int pagina, Integer tamanhoPagina, FiltroRecuperarCobrancas filtro, Ordenacao ordenacao) throws SdkException {
-        String url = URL_COBRANCAS.replace("AMBIENTE", config.getAmbiente())
+        String url = config.baseURL(URL_COBRANCAS)
                 + "?dataInicial=" + dataInicial
                 + "&dataFinal=" + dataFinal
                 + "&paginacao.paginaAtual=" + pagina

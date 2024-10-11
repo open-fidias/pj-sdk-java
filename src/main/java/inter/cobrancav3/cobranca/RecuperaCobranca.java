@@ -20,7 +20,7 @@ public class RecuperaCobranca {
 
     public CobrancaRecuperada recuperar(Config config, String codigoSolicitacao) throws SdkException {
         log.info("RecuperarCobranca {} codigoSolicitacao={}", config.getClientId(), codigoSolicitacao);
-        String url = URL_COBRANCAS.replace("AMBIENTE", config.getAmbiente()) + "/" + codigoSolicitacao;
+        String url = config.baseURL(URL_COBRANCAS) + "/" + codigoSolicitacao;
         String json = HttpUtils.callGet(config, url, ESCOPO_BOLETO_COBRANCA_READ, "Erro ao recuperar cobrança");
         try {
             return new ObjectMapper().readValue(json, CobrancaRecuperada.class);

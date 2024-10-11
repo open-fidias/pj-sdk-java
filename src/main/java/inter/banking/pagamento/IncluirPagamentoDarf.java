@@ -21,7 +21,7 @@ public class IncluirPagamentoDarf {
 
     public RespostaIncluirPagamentoDarf incluir(Config config, PagamentoDarf pagamento) throws SdkException {
         log.info("IncluirPagamentoDarf {} {}", config.getClientId(), pagamento.getCodigoReceita());
-        String url = URL_BANKING_PAGAMENTO_DARF.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_BANKING_PAGAMENTO_DARF);
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(pagamento);
             json = HttpUtils.callPost(config, url, ESCOPO_PAGAMENTO_DARF_WRITE, "Erro ao incluir pagamento de darf", json);

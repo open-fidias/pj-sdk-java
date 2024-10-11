@@ -19,4 +19,11 @@ public class Config {
     private String contaCorrente;
     @Setter
     private boolean controleRateLimit;
+
+    public String baseURL(String endpoint) {
+        if ("bancointer".equals(ambiente)) {
+            return endpoint.replace("BASE_URL", "cdpj.partners.bancointer.com.br");
+        }
+        return endpoint.replace("BASE_URL", "cdpj-sandbox.partners.uatinter.co");
+    }
 }

@@ -12,7 +12,7 @@ import static inter.constants.Constants.URL_PIX_WEBHOOK;
 public class ExcluirWebhook {
     public void excluir(Config config, String chave) throws SdkException {
         log.info("ExcluirWebhook pix {} {}", config.getClientId(), chave);
-        String url = URL_PIX_WEBHOOK.replace("AMBIENTE", config.getAmbiente()) + "/" + chave;
+        String url = config.baseURL(URL_PIX_WEBHOOK) + "/" + chave;
         HttpUtils.callDelete(config, url, ESCOPO_PIX_WEBHOOK_WRITE, "Erro ao excluir webhook");
     }
 }

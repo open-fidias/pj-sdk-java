@@ -40,7 +40,7 @@ public class ConsultarPixRecebidos {
     }
 
     private PaginaPix getPage(Config config, String dataInicial, String dataFinal, int pagina, Integer tamanhoPagina, FiltroConsultarPixRecebidos filtro) throws SdkException {
-        String url = URL_PIX_PIX.replace("AMBIENTE", config.getAmbiente()) + "?inicio=" + dataInicial + "&fim=" + dataFinal
+        String url = config.baseURL(URL_PIX_PIX) + "?inicio=" + dataInicial + "&fim=" + dataFinal
                 + "&paginacao.paginaAtual=" + pagina
                 + (tamanhoPagina != null ? "&paginacao.itensPorPagina=" + tamanhoPagina : "")
                 + addfilters(filtro);

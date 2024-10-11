@@ -12,7 +12,7 @@ import static inter.constants.Constants.URL_BANKING_PAGAMENTO;
 public class CancelaAgendamentoPagamento {
     public void cancelar(Config config, String codigoTransacao) throws SdkException {
         log.info("Cancelando Agendamento de Pagamento {} {}", config.getClientId(), codigoTransacao);
-        String url = URL_BANKING_PAGAMENTO.replace("AMBIENTE", config.getAmbiente()) + "/" + codigoTransacao;
+        String url = config.baseURL(URL_BANKING_PAGAMENTO) + "/" + codigoTransacao;
         HttpUtils.callDelete(config, url, ESCOPO_PAGAMENTO_BOLETO_WRITE, "Erro ao cancelar agendamento");
     }
 }

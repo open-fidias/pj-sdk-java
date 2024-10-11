@@ -17,7 +17,7 @@ public class CriarWebhook {
 
     public void criar(Config config, String tipoWebhook, String webhookUrl) throws SdkException {
         log.info("CriarWebhook banking {} {} {}", config.getClientId(), tipoWebhook, webhookUrl);
-        String url = URL_BANKING_WEBHOOK.replace("AMBIENTE", config.getAmbiente()) + "/" + tipoWebhook;
+        String url = config.baseURL(URL_BANKING_WEBHOOK) + "/" + tipoWebhook;
         CriarWebhookRequest request = CriarWebhookRequest.builder().webhookUrl(webhookUrl).build();
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request);

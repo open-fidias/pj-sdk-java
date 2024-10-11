@@ -4,21 +4,19 @@ import inter.banking.BankingSdk;
 import inter.cobranca.CobrancaSdk;
 import inter.cobranca.model.Pessoa;
 import inter.cobrancav3.CobrancaV3Sdk;
+import static inter.constants.Constants.DAYS_TO_EXPIRE;
 import inter.exceptions.SdkException;
 import inter.model.Config;
 import inter.pix.PixSdk;
 import inter.utils.SslUtils;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static inter.constants.Constants.DAYS_TO_EXPIRE;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class InterSdk {

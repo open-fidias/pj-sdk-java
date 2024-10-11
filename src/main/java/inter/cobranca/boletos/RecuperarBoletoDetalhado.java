@@ -20,7 +20,7 @@ public class RecuperarBoletoDetalhado {
 
     public BoletoDetalhado recuperar(Config config, String nossoNumero) throws SdkException {
         log.info("RecuperarBoletoDetalhado {} nossoNumero={}", config.getClientId(), nossoNumero);
-        String url = URL_BOLETOS.replace("AMBIENTE", config.getAmbiente()) + "/" + nossoNumero;
+        String url = config.baseURL(URL_BOLETOS) + "/" + nossoNumero;
         String json = HttpUtils.callGet(config, url, ESCOPO_BOLETO_COBRANCA_READ, "Erro ao recuperar boleto detalhado");
         try {
             return new ObjectMapper().readValue(json, BoletoDetalhado.class);

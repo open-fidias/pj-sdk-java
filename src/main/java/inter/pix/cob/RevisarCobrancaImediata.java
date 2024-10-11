@@ -21,7 +21,7 @@ public class RevisarCobrancaImediata {
     public CobrancaDetalhada revisar(Config config, Cobranca cobranca) throws SdkException {
         log.info("RevisarCobrancaImediata {} {}", config.getClientId(), cobranca.getTxid());
         try {
-            String url = URL_PIX_COBRANCAS_IMEDIATAS.replace("AMBIENTE", config.getAmbiente()) + "/" + cobranca.getTxid();
+            String url = config.baseURL(URL_PIX_COBRANCAS_IMEDIATAS) + "/" + cobranca.getTxid();
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(cobranca);
             json = HttpUtils.callPatch(config, url, ESCOPO_PIX_COB_WRITE, "Erro ao revisar cobrança imediata", json);
             return new ObjectMapper().readValue(json, CobrancaDetalhada.class);

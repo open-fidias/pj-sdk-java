@@ -22,7 +22,7 @@ public class RecuperarExtratoPdf {
 
     public void recuperar(Config config, String dataInicial, String dataFinal, String arquivo) throws SdkException {
         log.info("RecuperarExtratoPdf {} {}-{}", config.getClientId(), dataInicial, dataFinal);
-        String url = URL_BANKING_EXTRATO_PDF.replace("AMBIENTE", config.getAmbiente()) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal;
+        String url = config.baseURL(URL_BANKING_EXTRATO_PDF) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal;
         String json = HttpUtils.callGet(config, url, ESCOPO_EXTRATO_READ, "Erro ao consultar extrato pdf");
         try {
             RetornoPdf retornoPdf = new ObjectMapper().readValue(json, RetornoPdf.class);

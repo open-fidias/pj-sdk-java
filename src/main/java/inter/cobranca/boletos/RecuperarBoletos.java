@@ -42,7 +42,7 @@ public class RecuperarBoletos {
     }
 
     private PaginaBoletos getPage(Config config, String dataInicial, String dataFinal, int pagina, Integer tamanhoPagina, FiltroRecuperarBoletos filtro, Ordenacao ordenacao) throws SdkException {
-        String url = URL_BOLETOS.replace("AMBIENTE", config.getAmbiente()) + "?dataInicial=" + dataInicial + "&dataFinal=" + dataFinal
+        String url = config.baseURL(URL_BOLETOS) + "?dataInicial=" + dataInicial + "&dataFinal=" + dataFinal
                 + "&paginaAtual=" + pagina
                 + (tamanhoPagina != null ? "&itensPorPagina=" + tamanhoPagina : "")
                 + addfilters(filtro)

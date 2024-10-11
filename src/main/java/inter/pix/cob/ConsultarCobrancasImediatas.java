@@ -40,7 +40,7 @@ public class ConsultarCobrancasImediatas {
     }
 
     private PaginaCobrancas getPage(Config config, String dataInicial, String dataFinal, int pagina, Integer tamanhoPagina, FiltroConsultarCobrancasImediatas filtro) throws SdkException {
-        String url = URL_PIX_COBRANCAS_IMEDIATAS.replace("AMBIENTE", config.getAmbiente()) + "?inicio=" + dataInicial + "&fim=" + dataFinal
+        String url = config.baseURL(URL_PIX_COBRANCAS_IMEDIATAS) + "?inicio=" + dataInicial + "&fim=" + dataFinal
                 + "&paginacao.paginaAtual=" + pagina
                 + (tamanhoPagina != null ? "&paginacao.itensPorPagina=" + tamanhoPagina : "")
                 + addfilters(filtro);

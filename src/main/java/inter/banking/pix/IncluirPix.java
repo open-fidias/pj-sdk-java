@@ -21,7 +21,7 @@ public class IncluirPix {
 
     public RespostaIncluirPix incluir(Config config, Pix pix) throws SdkException {
         log.info("IncluirPix {} {}", config.getClientId(), pix.getDescricao());
-        String url = URL_BANKING_PAGAMENTO_PIX.replace("AMBIENTE", config.getAmbiente());
+        String url = config.baseURL(URL_BANKING_PAGAMENTO_PIX);
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(pix);
             json = HttpUtils.callPost(config, url, ESCOPO_PAGAMENTO_PIX_WRITE, "Erro ao incluir pix", json);

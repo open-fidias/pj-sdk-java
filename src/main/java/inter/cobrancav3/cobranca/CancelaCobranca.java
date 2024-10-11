@@ -20,7 +20,7 @@ public class CancelaCobranca {
 
     public void cancelar(Config config, String codigoSolicitacao, String motivoCancelamento) throws SdkException {
         log.info("CancelarCobranca {} {} {}", config.getClientId(), codigoSolicitacao, motivoCancelamento);
-        String url = URL_COBRANCAS.replace("AMBIENTE", config.getAmbiente()) + "/" + codigoSolicitacao + "/cancelar";
+        String url = config.baseURL(URL_COBRANCAS) + "/" + codigoSolicitacao + "/cancelar";
         RequisicaoCancelarCobranca request = RequisicaoCancelarCobranca.builder().motivoCancelamento(motivoCancelamento).build();
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request);

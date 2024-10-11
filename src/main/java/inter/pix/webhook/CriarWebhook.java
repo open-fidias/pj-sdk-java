@@ -19,7 +19,7 @@ import static inter.constants.Constants.URL_PIX_WEBHOOK;
 public class CriarWebhook {
     public void criar(Config config, String webhookUrl, String chave) throws SdkException {
         log.info("CriarWebhook pix {} {} {}", config.getClientId(), webhookUrl, chave);
-        String url = URL_PIX_WEBHOOK.replace("AMBIENTE", config.getAmbiente()) + "/" + chave;
+        String url = config.baseURL(URL_PIX_WEBHOOK) + "/" + chave;
         CriarWebhookRequest request = CriarWebhookRequest.builder().webhookUrl(webhookUrl).build();
         try {
             String json = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request);

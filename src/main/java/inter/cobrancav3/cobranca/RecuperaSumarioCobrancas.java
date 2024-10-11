@@ -21,7 +21,7 @@ public class RecuperaSumarioCobrancas {
 
     public Sumario recuperar(Config config, String dataInicial, String dataFinal, FiltroRecuperarSumarioCobrancas filtro) throws SdkException {
         log.info("RecuperarSumarioCobrancas {} {}-{}", config.getClientId(), dataInicial, dataFinal);
-        String url = URL_COBRANCAS_SUMARIO.replace("AMBIENTE", config.getAmbiente()) + "?dataInicial=" + dataInicial + "&dataFinal=" + dataFinal
+        String url = config.baseURL(URL_COBRANCAS_SUMARIO) + "?dataInicial=" + dataInicial + "&dataFinal=" + dataFinal
                 + addfilters(filtro);
         String json = HttpUtils.callGet(config, url, ESCOPO_BOLETO_COBRANCA_READ, "Erro ao recuperar sumário de cobrancas");
         try {

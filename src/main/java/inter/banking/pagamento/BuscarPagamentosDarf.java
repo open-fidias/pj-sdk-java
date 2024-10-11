@@ -23,7 +23,7 @@ public class BuscarPagamentosDarf {
 
     public List<RetornoPagamentoDarf> buscar(Config config, String dataInicial, String dataFinal, FiltroBuscarPagamentosDarf filtro) throws SdkException {
         log.info("BuscarPagamentosDarf {} {}-{}", config.getClientId(), dataInicial, dataFinal);
-        String url = URL_BANKING_PAGAMENTO_DARF.replace("AMBIENTE", config.getAmbiente()) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal
+        String url = config.baseURL(URL_BANKING_PAGAMENTO_DARF) + "?dataInicio=" + dataInicial + "&dataFim=" + dataFinal
                 + addfilters(filtro);
         String json = HttpUtils.callGet(config, url, ESCOPO_PAGAMENTO_BOLETO_READ, "Erro ao buscar pagamentos de DARF");
         try {
